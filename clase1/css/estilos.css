@@ -1,0 +1,19 @@
+/* Para las "clases" se usa . */
+.fondoNegro {
+    background-color: black;
+    padding: 10px;
+}
+
+.fondoGris {
+    background-color: lightgrey;
+    padding: 10px;
+}
+
+.paises {
+    color: red;
+}
+
+/* Para los "identificadores" se usa # */
+#paises1 { 
+    font-weight: bold;
+}
