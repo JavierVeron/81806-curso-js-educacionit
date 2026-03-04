@@ -17,3 +17,18 @@
 #paises1 { 
     font-weight: bold;
 }
+
+#div1 {
+    background-color: aqua;
+    padding: 20px;
+}
+
+#div2 {
+    background-color: pink;
+    padding: 20px;
+}
+
+#div3 {
+    background-color: blueviolet;
+    padding: 20px;
+}

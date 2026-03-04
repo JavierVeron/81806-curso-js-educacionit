@@ -188,7 +188,7 @@ console.log("Mitad de Programa");
 console.log("Fin de Programa"); */
 
 // Asincrónico
-console.log("Inicio de Programa");
+/* console.log("Inicio de Programa");
 
 setTimeout(() => {
     console.log("Mitad de Programa #1");
@@ -202,6 +202,171 @@ setTimeout(() => {
     console.log("Mitad de Programa #3");
 }, 1000)
 
-console.log("Fin de Programa");
+console.log("Fin de Programa"); */
 
 // QUEDA PENDIENTE FASES DE EVENTOS
+// Existen 3 formas de asignar eventos a elementos HTML
+/* const saludar = () => {
+    alert("Hola a Todos!");
+}
+
+const botonPresionar = document.getElementById("btnPresionar"); */
+
+// Opción #1 => mediante el método addEventListener
+//botonPresionar.addEventListener("click", saludar);
+/* botonPresionar.addEventListener("click", () => {
+    alert("Hola a Todos #2!");
+}); */
+/* botonPresionar.addEventListener("click", function() {
+    alert("Hola a Todos #3!");
+}); */
+
+// Opción #2 => mediante la propiedad onclick
+/* botonPresionar.onclick = () => {
+    saludar();
+} */
+/* botonPresionar.onclick = function() {
+    saludar();
+} */
+
+
+// Propagación de Eventos
+/* const div1 = document.getElementById("div1");
+div1.addEventListener("click", (e) => {
+    //e.stopPropagation();
+    
+    console.log("Estoy en el DIV #1");
+})
+
+const div2 = document.getElementById("div2");
+div2.addEventListener("click", (e) => {
+    //e.stopPropagation();
+    console.log("Estoy en el DIV #2");
+})
+
+const div3 = document.getElementById("div3");
+div3.addEventListener("click", (e) => {
+    //e.stopPropagation();
+    //e.stopImmediatePropagation();
+    console.log("Estoy en el DIV #3");
+}) */
+
+// Validación de Formularios
+// Opción #1 => con Boton tipo "button"
+/* const validarFormulario = () => {
+    const nombre = document.getElementById("nombre");
+    const contrasena = document.getElementById("contrasena");
+    const errorNombre = document.getElementById("errorNombre");
+    const errorContrasena = document.getElementById("errorContrasena");
+    const form1 = document.getElementById("form1");
+
+    if (nombre.value == "") {
+        errorNombre.innerHTML = "Falta completar el Campo Nombre!";
+        return false;
+    } else {
+        errorNombre.innerHTML = "";
+    }
+
+    if (contrasena.value == "") {
+        errorContrasena.innerHTML = "Falta completar el Campo Contraseña!";
+        return false;
+    } else {
+        errorContrasena.innerHTML = "";
+    }
+
+    form1.submit(); // Enviar el formulario
+} */
+
+// Opción #2 => con Botón tipo "submit" y Opción #3 => utilizando está función para el atributo onsubmit del Formulario (no hace asignar esta función para la función click)
+const validarFormulario = (e) => {
+    e.preventDefault(); // Detiene el envío del Formulario
+    const nombre = document.getElementById("nombre");
+    const contrasena = document.getElementById("contrasena");
+    const errorNombre = document.getElementById("errorNombre");
+    const errorContrasena = document.getElementById("errorContrasena");
+    const form1 = document.getElementById("form1");
+
+    if (nombre.value == "") {
+        errorNombre.innerHTML = "Falta completar el Campo Nombre!";
+        return false;
+    } else {
+        errorNombre.innerHTML = "";
+    }
+
+    if (contrasena.value == "") {
+        errorContrasena.innerHTML = "Falta completar el Campo Contraseña!";
+        return false;
+    } else {
+        errorContrasena.innerHTML = "";
+    }
+
+    form1.submit(); // Enviar el formulario
+}
+
+/* document.getElementById("btnEnviar").addEventListener("click", validarFormulario); */ // Asignar un evento click al botón Enviar
+/* document.getElementById("form1").addEventListener("submit", validarFormulario); */ // Asignar un evento submit al Formulario
+
+// Custom Event
+/* const validarForm2 = (e) => {
+    e.preventDefault(); // Detiene el envío del Formulario
+    const nombre = document.getElementById("nombre");
+    const contrasena = document.getElementById("contrasena");
+    const errorNombre = document.getElementById("errorNombre");
+    const errorContrasena = document.getElementById("errorContrasena");
+
+    if (nombre.value == "") {
+        errorNombre.innerHTML = "Falta completar el Campo Nombre!";
+        return false;
+    } else {
+        errorNombre.innerHTML = "";
+    }
+
+    if (contrasena.value == "") {
+        errorContrasena.innerHTML = "Falta completar el Campo Contraseña!";
+        return false;
+    } else {
+        errorContrasena.innerHTML = "";
+    }
+
+    document.dispatchEvent(new CustomEvent("formularioEnviado", { detail: {nombre:nombre.value, contrasena:contrasena.value} }));
+}
+
+document.getElementById("btnEnviar").addEventListener("click", validarForm2);
+
+document.addEventListener("formularioEnviado", e =>
+    document.getElementById("errorNombre").innerHTML = `Bienvenido, ${e.detail.nombre} (${e.detail.contrasena})!`
+); */
+
+
+// Eventos del Mouse
+const btnMouse = document.querySelector("#btnMouse");
+
+btnMouse.addEventListener("click", () => {
+    console.log("Hola a Todos! #1");
+    //btnMouse.className = "btn btn-secondary disabled";
+    btnMouse.classList.add("btn-secondary");
+    btnMouse.classList.add("disabled");
+});
+/* btnMouse.addEventListener("click", () => {
+    console.log("Hola a Todos! #2");
+}); */
+btnMouse.addEventListener("dblclick", () => {
+    console.log("Hola a Todos! (Doble Click)");
+});
+btnMouse.addEventListener("mousemove", () => {
+    console.log("Estoy moviendo el mouse!");
+});
+btnMouse.addEventListener("mouseover", () => {
+    console.log("Estoy dentro del Botón!");
+    //btnMouse.className = "btn btn-danger";
+    btnMouse.classList.remove("btn-primary");
+    btnMouse.classList.add("btn-danger");
+});
+btnMouse.addEventListener("mouseout", () => {
+    console.log("Estoy fuera del Botón!");
+    btnMouse.classList.remove("btn-danger");
+    btnMouse.classList.add("btn-primary");
+});
+btnMouse.addEventListener("contextmenu", () => {
+    console.log("Estoy presionando el Botón derecho!");
+});
