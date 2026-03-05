@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clase 2 - Educación IT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container my-5">
+        <div class="row">
+            <div id="origen" class="col-md-6 p-5 bg-light">
+                <img src="https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$Hamburguesa.png/200/200/original?country=cr" alt="Hamburguesa 1" width="240" />
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7d4vdO_dCz9miDaljlWt3Mtq13EhnkHLSWw&s" alt="Hamburguesa 2" width="240" />
+            </div>
+            <div id="destino" class="col-md-6 p-5 bg-secondary"></div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="mb-3">
+                        <label for="texto" class="form-label">Mensaje</label>
+                        <input type="text" class="form-control" id="texto" />
+                        <div id="mensajeInfo" class="form-text"></div>
+                    </div>
+                    <button type="button" class="btn btn-primary fw-bold" id="btnEnviar">Enviar Tweet!</button>
+                </form>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div id="mensajes" class="col"></div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="POST" action="index.html">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="reset" class="btn btn-primary">Resetear</button>
+                    <button type="button" class="btn btn-primary" onclick="javascript:alert('hola')">Limpiar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
