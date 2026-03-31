@@ -203,7 +203,288 @@ console.log(nuevosProductos); */
 console.log(nuevosProductos); */
 
 // Convertir a string
-console.log(productos.join("*"));
-console.log(productos.join(" / "));
+/* console.log(productos.join("*"));
+console.log(productos.join(" / ")); */
 
 // Queda pendiente los Objetos Iterables
+/* const iterable = {
+    data: [10, 20, 30],
+    [Symbol.iterator]() {
+        let index = 0;
+        return {
+            next: () => ({
+                value: this.data[index],
+                done: index++ >= this.data.length
+            })
+        };
+    }
+};
+
+console.log(iterable);
+
+for (const value of iterable) {
+    console.log(value); // 10, 20, 30
+} */
+
+// Iterar Array
+const frutas = ["manzana", "naranja", "pera", "banana"];
+
+// Opción #1 => Función For
+/* for (let i=0; i<frutas.length; i++) {
+    console.log("1- " + frutas[i]);
+} */
+
+// Opción #2 => Método foreach
+/* frutas.forEach(item => {
+    console.log("2- " + item);
+}) */
+
+// Opción #3 => Función for..of
+/* for (const fruta of frutas) {
+    console.log("3- " + fruta);
+} */
+
+/* const renderFrutas = (frutas) => {
+    const contenido = document.getElementById("resultado");
+    let contenidoHTML = `<ul class="list-group">`;
+
+    for (const fruta of frutas) {
+        contenidoHTML += `<li class="list-group-item">${fruta}</li>`
+    }
+
+    contenidoHTML += `</ul>`;
+    contenido.innerHTML = contenidoHTML;
+}
+
+renderFrutas(frutas); */
+
+// Iterar Strings
+/* let texto = "Argentina";
+console.log(texto[0] + texto[1]);
+
+const renderTexto = (texto) => {
+    const contenido = document.getElementById("resultado");
+    let output = "";
+
+    for (let i=0; i<texto.length; i++) {
+        if (i%2 != 0) {
+            output += "<span class='text-primary p-3'>" + texto[i].toUpperCase() + "</span>";
+        } else {
+            output += "<span class='text-white bg-primary p-3'>" + texto[i].toUpperCase() + "</span>";
+        }
+    }
+
+    contenido.innerHTML = `<div class="alert alert-secondary" role="alert">${output}</div>`;
+}
+
+renderTexto(texto); */
+
+// Iterar Objetos
+const producto = {id:1, nombre:"Coca Cola", precio:5000, categoria:"bebidas", cantidad:3};
+
+/* for (const propiedad in producto) {
+    console.log("Propiedad", propiedad);
+    console.log("Valor", producto[propiedad]);  
+} */
+
+
+// Set
+/* const conjunto = new Set([1, 2, 3, 3, 4]); // No permite valores duplicados
+for (const num of conjunto) {
+    console.log(num); // 1, 2, 3
+} */
+
+// Map
+/* const mapa = new Map([
+    ["a", 1],
+    ["b", 2]
+]);
+for (const [clave, valor] of mapa) {
+    console.log(clave, valor); // a 1, b 2
+} */
+
+/* const mapa2 = [1, 2, [3, [4, 5]]].flat(2);
+console.log(mapa2); */
+
+
+// Colecciones y Objetos
+/* const usuario = {
+    nombre: "Ana",
+    edad: 25,
+    activo: true
+};
+
+console.log(usuario.nombre) */
+
+/* const mapa = new Map();
+mapa.set("nombre", "Carlos");
+mapa.set("numero", 10);
+mapa.set("club", "Real Madrid");
+console.log(mapa.get("nombre")); // "Carlos"
+console.log(mapa.get("numero")); // "10"
+//mapa.delete("club");
+
+if (mapa.has("club")) {
+    console.log(mapa.get("club")); // "Real Madrid" => undefined
+}
+
+console.log(mapa.size); // 2 */
+
+// Set
+/* const conjunto = new Set();
+conjunto.add(1);
+conjunto.add(2);
+conjunto.add(3);
+conjunto.add(2); // Ignorado, ya existe
+conjunto.add(2); // Ignorado, ya existe
+conjunto.add(2); // Ignorado, ya existe
+conjunto.add(2); // Ignorado, ya existe
+conjunto.delete(2); // Elimina el valor 2
+//conjunto.clear(); // Vacía el set
+
+if (conjunto.has(2)) {
+    console.log("Tiene el Valor 2!");
+}
+
+console.log(conjunto); // Set { 1, 2, 3 } */
+
+
+// Objeto Object (3 métodos más utilizados)
+// Obtener Claves y Valores
+/* const claveValores = Object.entries(producto);
+console.log(claveValores);
+// Obtener un array de Claves
+const claves = Object.keys(producto);
+console.log(claves);
+// Obtener un array de Valores
+const valores = Object.values(producto);
+console.log(valores); */
+
+
+// Desestructuración de Objetos, Array y Parámetros de Funciones
+const usuario = { nombre: "Ana", edad: 25, ciudad: "Madrid" };
+// Antes
+/* let nombre = usuario.nombre;
+let edad = usuario.edad; */
+// Desestructuración por nombre (la variable tienen que coincidir con el nombre de la propiedad)
+/* const { nombre, edad, city } = usuario;
+console.log(nombre); // "Ana"
+console.log(edad); // 25
+console.log(city); // undefined */
+
+// Desestructuración por alias (a la variable ponemos 2 puntos con el nombre de la variable deseada)
+/* const { nombre:name, edad:age, ciudad:city } = usuario;
+console.log(name); // "Ana"
+console.log(age); // 25
+console.log(city); // Madrid */
+
+// Desestructuración anidada
+/* const empleado = {
+    nombre: "Carlos",
+    puesto: "Desarrollador",
+    direccion: { ciudad: "Bogotá", pais: "Colombia" }
+};
+const { nombre, direccion:{ciudad, pais} } = empleado;
+console.log(nombre, ciudad, pais); // "Bogotá Colombia" */
+
+// Desestructuración de arrays
+const colores = ["rojo", "verde", "azul"];
+// Antes
+/* const colorRojo = colores[0];
+console.log(colorRojo); */
+
+/* const [a,,b] = colores;
+console.log(a);
+console.log(b); */
+/* const [,,tercero] = colores;
+console.log(tercero); */
+
+/* const [a, b, c = "negro"] = ["blanco", "gris"];
+console.log(a, b, c); // "blanco gris negro" */
+
+// Intercambiar valores
+/* let x = 5, y = 10;
+[x, y] = [y, x];
+console.log(x, y); // 10, 5 */
+
+// Operador ...rest
+/* const numeros = [1, 2, 3, 4, 5];
+const [primero, segundo, ...resto] = numeros;
+console.log(primero, segundo); // 1 2
+console.log(resto); // [3, 4, 5]
+const numeros2 = [primero, segundo, ...resto]; // Crear un array y en la posición 2 utilice el operador "Spread"
+console.log(numeros2);
+const numeros3 = [...resto, ...resto];
+console.log(numeros3); // [3,4,5,3,4,5] */
+
+// Desestructurando parámetros de funciones
+/* function mostrar({ nombre, edad }) {
+    console.log(`Nombre: ${nombre}, Edad: ${edad}`);
+}
+
+const persona = {
+    nombre:"Pablo Sasowski",
+    edad:25,
+    email:"pablo.saso@gmail.com"
+}
+
+mostrar(persona); */
+
+
+// Fundamentos Web Fechas, JSON y almacenamiento de datos
+/* const fecha = new Date();
+console.log(fecha.toString());
+console.log(fecha.toLocaleDateString());
+console.log("Día", fecha.getDate());
+console.log("Mes", (fecha.getMonth()+1));
+console.log("Año", fecha.getFullYear());
+console.log(`${fecha.getDate()}-${(fecha.getMonth()+1)}-${fecha.getFullYear()}`);
+console.log(fecha.toLocaleDateString().replaceAll("/", "-")); */
+
+/* const fecha = new Date();
+console.log(fecha.getTime());
+const fecha2 = new Date(1770000000000);
+console.log(fecha2);
+console.log(fecha.toLocaleDateString("es-AR"));
+console.log(fecha.toLocaleDateString("en-US"));
+console.log(fecha.toLocaleDateString("en-UK")); */
+
+// Diferencia de Fechas
+/* const fechaActual = new Date().getTime();
+const fechaCumple = new Date("2026-05-21").getTime();
+const diferencia = fechaCumple - fechaActual;
+console.log(fechaActual);
+console.log(fechaCumple);
+const dias = Math.round(diferencia / (1000 * 60 * 60 * 24));
+console.log("Faltan " + dias + " días para tu Cumpleaños!"); */
+
+
+// localStorage y sessionStorage
+/* localStorage.setItem("nombre", "Orlando");
+localStorage.setItem("nombre", "Orlando Bloom"); */
+/* let name = localStorage.getItem("nombre");
+console.log(name); */
+
+//localStorage.setItem("numero1", 20); // Crear o pisar una localStorage
+//localStorage.setItem("numero2", 30);
+/* localStorage.setItem("sosRico", false);
+let resultado = parseInt(localStorage.getItem("numero1")) + parseInt(localStorage.getItem("numero2"));
+console.log(resultado);
+console.log(localStorage.getItem("sosRico")); */
+
+//localStorage.setItem("producto", JSON.stringify(producto)); // getItem para obtener el valor
+//localStorage.setItem("colores", JSON.stringify(colores));
+
+/* console.log(JSON.parse(localStorage.getItem("producto")));
+console.log(JSON.parse(localStorage.getItem("colores")));
+
+localStorage.removeItem("colores"); // Elimino la localStorage "colores"
+localStorage.clear(); // Elimina TODAS las localStorage */
+
+localStorage.setItem("nombre", "Orlando Vargas");
+sessionStorage.setItem("nombre", "Orlando Bloom");
+console.log(localStorage.getItem("nombre"));
+console.log(sessionStorage.getItem("nombre"));
+
+/* const fechaActual = new Date();
+console.log(fechaActual.toJSON()); */
