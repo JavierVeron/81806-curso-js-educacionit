@@ -452,10 +452,461 @@ console.log(sumar(20, 50)); */
 const usuario = new Usuario("Ana", "ana.quevedo@gmail.com");
 usuario.saludar(); // "Hola, soy Ana" */
 
-const sumarTodo = (...numeros) => numeros.reduce((acc, num) => acc + num, 0);
+/* const sumarTodo = (...numeros) => numeros.reduce((acc, num) => acc + num, 0);
 console.log(sumarTodo(1, 2, 3, 4)); // 10
 
 const Persona = (nombre) => { this.nombre = nombre };
-const p = new Persona("Luis"); // Error: Persona is not a constructor
+const p = new Persona("Luis"); // Error: Persona is not a constructor */
 
 // Queda pendiente IIFE
+// Declarar y ejecutar una función síncrona
+/* (function() {
+    console.log("Esta función se ejecuta inmediatamente");
+})(); */
+
+// Declarar y ejecutar una función asíncrona
+/* (async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users/");
+    const data = await response.json();
+    console.log(data);
+})() */
+
+// Scope de las variables
+/* (function() {
+    let mensaje = "Hola desde IIFE";
+    console.log(mensaje + " #1");
+})();
+
+console.log(mensaje + " #2"); // Error: mensaje no está definido */
+
+// Pasar parámetros a función IIFE
+/* (function(nombre, apellido) {
+    console.log(`Hola: [${apellido.toUpperCase()}, ${nombre.toUpperCase()}]`);
+})("Orlando", "Vargas"); */
+
+
+// Prototipos
+const persona = {
+    saludar() {
+        console.log(`Hola, soy ${this.nombre}`);
+    }
+};
+
+/* const usuario = Object.create(persona);
+console.log(usuario);
+usuario.nombre = "Ana";
+console.log(usuario.nombre);
+usuario.saludar(); // "Hola, soy Ana" */
+
+// Acceder a su objeto prototipo
+//console.log(usuario.__proto__ === persona); // true
+//console.log(Object.getPrototypeOf(usuario)); // persona
+
+// Creando un objeto con función constructora
+/* function Persona(nombre) {
+    this.nombre = nombre;
+}
+
+Persona.prototype.saludar = function() {
+    console.log(`Hola, soy ${this.nombre}`);
+};
+
+const nuevaPersona = new Persona("Orlando");
+nuevaPersona.saludar(); // "Hola, soy Orlando" */
+
+// Herencia
+/* function Estudiante(nombre, carrera) {
+    Persona.call(this, nombre); // Llama al constructor de Persona
+    this.carrera = carrera;
+}
+
+Estudiante.prototype = Object.create(Persona.prototype);
+Estudiante.prototype.constructor = Estudiante;
+Estudiante.prototype.estudiar = function() {
+    console.log(`${this.nombre} estudia ${this.carrera}`);
+};
+
+const pedro = new Estudiante("Pedro", "Ingeniería");
+pedro.saludar(); // "Hola, soy Pedro"
+pedro.estudiar(); // "Pedro estudia Ingeniería" */
+
+
+// Clases
+/* class Persona {
+    constructor(nombre, edad) {
+        this.nombre = nombre; // las propiedades serían como las variables
+        this.edad = edad;
+    }
+
+    saludar() { // esto es un método
+        console.log(`Hola, soy ${this.nombre} y tengo ${this.edad} años.`);
+    }
+}
+const persona1 = new Persona("Ana", 25); // creando una instancia de la clase Persona
+const persona2 = new Persona("Orlando", 24); // creando una instancia de la clase Persona
+persona1.saludar();
+persona2.saludar(); */
+
+
+// Clase con propiedades y métodos estáticos
+/* class Utilidades {
+    static PI = 3.14;
+
+    static sumar(a, b) {
+        return a + b;
+    }
+}
+
+console.log("Valor de PI: ", Utilidades.PI);
+console.log("Suma: " + Utilidades.sumar(3, 5)); // 8 */
+
+
+// Getters y Setters
+// Clase normal
+/* class Persona {
+    constructor(nombre, apellido) {
+        this.name = nombre;
+        this.lastname = apellido
+    }
+
+    getFullName() {
+        console.log(`Hi, I'm ${this.name + " " + this.lastname}`);
+    }
+}
+
+const persona1 = new Persona("Pablo", "Sasowski");
+persona1.name = "Paul"; // Modificar la propiedad desde afuera
+console.log(persona1.name);
+persona1.getFullName(); */
+
+// Creamos una clase con Getter y Setter
+/* class Persona {
+    constructor(nombre, edad) {
+        this.nombre = nombre;
+        this._edad = edad; // crear una propiedad oculta
+    }
+
+    get edad() { return this._edad; } // Getter
+    set edad(nuevaEdad) { // Setter
+        nuevaEdad > 0 ? this._edad = nuevaEdad : console.log("La edad debe ser un número positivo.");
+    }
+}
+
+const juan = new Persona("Juan", 30);
+console.log(juan.nombre);
+console.log(juan.edad);
+
+juan.edad = 35;
+console.log(juan.edad);
+juan.edad = -5; */
+
+
+/* class Circulo {
+    constructor(radio) {
+        this.radio = radio;
+    }
+
+    get diametro() {
+        return this.radio * 2;
+    }
+
+    get area() {
+        return Math.PI * this.radio ** 2;
+    }
+}
+
+const c = new Circulo(5);
+console.log(c.diametro); // 10
+console.log(c.area); // 78.54 */
+
+
+/* class CuentaBancaria {
+    constructor(saldo) {
+        this._saldo = saldo;
+    }
+
+    get saldo() {
+        return `$${this._saldo}`;
+    }
+
+    set saldo(nuevoSaldo) {
+        if (nuevoSaldo >= 0) {
+            this._saldo = nuevoSaldo;
+        } else {
+            console.log("Error: El saldo no puede ser negativo.");
+        }
+    }
+}
+
+const cuenta = new CuentaBancaria(1000);
+console.log(cuenta.saldo); // "$1000"
+cuenta.saldo = -100; // "Error: El saldo no puede ser negativo."
+console.log(cuenta.saldo); */
+
+
+/* class Persona {
+    constructor(nombre) { this.nombre = nombre; }
+    saludar() { console.log(`Hola, soy ${this.nombre}`); }
+}
+
+class Estudiante extends Persona {
+    constructor(nombre, carrera) {
+        super(nombre);
+        this.carrera = carrera;
+    }
+
+    estudiar() { console.log(`${this.nombre} estudia ${this.carrera}`); }
+}
+
+const maria = new Estudiante("María", "Matemáticas");
+maria.saludar();
+maria.estudiar();
+
+
+class Empleado extends Persona {
+    saludar() {
+    console.log(`Hola, soy ${this.nombre} y soy empleado.`);
+ }
+}
+
+const juan = new Empleado("Juan");
+juan.saludar(); // "Hola, soy Juan y soy empleado."
+
+
+class Profesor extends Persona {
+    saludar() {
+        super.saludar();
+        console.log("Soy profesor.");
+    }
+}
+
+const ana = new Profesor("Ana");
+ana.saludar();
+// "Hola, soy Ana"
+// "Soy profesor." */
+
+
+// Propiedades y Métodos estáticos
+/* class Utilidades {
+    static academia = "Educación IT";
+
+    static convertirMayusculas(texto) {
+        return texto.toUpperCase();
+    }
+
+    static convertirMinusculas(texto) {
+        return texto.toLowerCase();
+    }
+
+    static quitarEspacios(texto) {
+        return texto.trim();
+    }
+}
+console.log(Utilidades.convertirMayusculas("javascript")); // "JAVASCRIPT"  
+console.log(Utilidades.convertirMinusculas("JAVASCRIPT")); // "javascript"
+console.log(Utilidades.quitarEspacios("  Estudiando JS Avanzado               "));
+console.log(Utilidades.academia); */
+
+
+/* class Configuracion {
+    static tema = "oscuro";
+    static idioma = "español";
+    static mostrarConfig() {
+        console.log(`Tema: ${this.tema}, Idioma: ${this.idioma}`);
+    }
+}
+
+Configuracion.mostrarConfig(); // "Tema: oscuro, Idioma: es" */
+
+
+// Propiedades estáticas, sus valores viajan en todas sus instancias
+/* class Usuario {
+    static totalUsuarios = 0;
+    
+    constructor(nombre) {
+        this.nombre = nombre;
+        Usuario.totalUsuarios++; // Incrementa la propiedad estática
+    }
+
+    static obtenerTotalUsuarios() {
+        return `Usuarios creados: ${this.totalUsuarios}`;
+    }
+}
+
+new Usuario("Ana");
+new Usuario("Pedro");
+console.log(Usuario.obtenerTotalUsuarios()); // "Usuarios creados: 2" */
+
+// Contador para propiedad de instancia y con Contador con propiedad estática
+/* class Contador {
+    static contadorGlobal = 0;
+
+    constructor(nombre) {
+        this.nombre = nombre;
+        this.contador = 0;
+    }
+
+    contar() {
+        this.contador++;
+        Contador.contadorGlobal++
+    }
+}
+
+const contador1 = new Contador("Contador #1");
+const contador2 = new Contador("Contador #2");
+contador1.contar();
+contador1.contar();
+contador2.contar();
+contador2.contar();
+contador2.contar();
+console.log("Contador #1: " + contador1.contador);
+console.log("Contador #2: " + contador2.contador);
+console.log("Contador Global: " + Contador.contadorGlobal); */
+
+// Propiedades estáticas con método estáticos
+/* class Config {
+    static version = "1.2.3";
+    static obtenerVersion() {
+        return `Versión actual: ${this.version}`;
+    }
+}
+
+console.log(Config.obtenerVersion()); // "Versión actual: 1.2.3" */
+
+
+// Patron Singleton
+/* class Singleton {
+    static instancia = null;
+    static obtenerInstancia() {
+        if (!this.instancia) {
+            this.instancia = new Singleton();
+            console.log("Se crea una conexión a la BD!");
+        }
+
+        return this.instancia;
+    }
+}
+
+const obj1 = Singleton.obtenerInstancia();
+const obj2 = Singleton.obtenerInstancia();
+const obj3 = Singleton.obtenerInstancia();
+console.log(obj1 === obj2); // true (misma instancia)  */
+
+
+/* class Contador {
+    static cuenta = 0; // Propiedad estática
+    static incrementar() { // Método estático
+        return ++this.cuenta;
+    }
+
+    static obtenerCuenta() {
+        return `Total: ${this.cuenta}`;
+    }
+}
+
+console.log(Contador.incrementar()); // 1
+console.log(Contador.incrementar()); // 2
+console.log(Contador.obtenerCuenta()); // "Total: 2" */
+
+
+// Las propiedades estáticas pueden almacenar configuraciones que se aplican en toda la aplicación.
+/* class Configuracion {
+    static tema = "oscuro";
+    static idioma = "es";
+    
+    static cambiarTema(nuevoTema) {
+        this.tema = nuevoTema;
+    }
+
+    static mostrarConfig() {
+        return `Tema: ${this.tema}, Idioma: ${this.idioma}`;
+    }
+}
+
+console.log(Configuracion.mostrarConfig()); // "Tema: oscuro, Idioma: es"
+Configuracion.cambiarTema("claro");
+console.log(Configuracion.mostrarConfig()); // "Tema: claro, Idioma: es" */
+
+
+// Un buen ejemplo, es utilizar una Clase con propiedades estáticas para usarlo como Generador de IDs
+/* class GeneradorID {
+    static ultimoID = 0;
+ 
+    constructor() {
+        this.id = ++GeneradorID.ultimoID;
+    }
+
+    static obtenerUltimoID() {
+        return `Último ID generado: ${this.ultimoID}`;
+    }
+}
+
+const obj1 = new GeneradorID();
+const obj2 = new GeneradorID();
+const obj3 = new GeneradorID();
+console.log(obj1.id); // 1
+console.log(obj2.id); // 2
+console.log(obj3.id); // 3
+console.log(GeneradorID.obtenerUltimoID()); // "Último ID generado: 3" */
+
+
+// Propiedades y métodos privados y protegidos
+/* class Usuario {
+    #clave;
+    constructor(nombre, clave) {
+        this.nombre = nombre;
+        this.#clave = clave; // propiedad privado
+    }
+
+    #encriptarClave = () => `***${this.#clave}***`; // método privado
+    obtenerClaveSegura = () => this.#encriptarClave();
+}
+
+const user = new Usuario("Ana", "12345");
+console.log(user.nombre); // "Ana"
+console.log(user.obtenerClaveSegura()); // "***12345***" */
+
+
+// Propiedades protegidos
+/* class Empleado {
+    constructor(nombre, salario) {
+        this.nombre = nombre;
+        this._salario = salario; // Propiedad "protegida"
+    }
+
+    mostrarSalario() {
+        return `El salario de ${this.nombre} es ${this._salario}`;
+    }
+}
+
+const e1 = new Empleado("Carlos", 3000);
+console.log(e1.mostrarSalario()); // "El salario de Carlos es 3000"
+console.log(e1._salario); // No recomendado, pero posible */
+
+
+// Combinación entre Método Privados y Protegidos
+/* class CuentaBancaria {
+    #saldo;
+    
+    constructor(titular, saldo) {
+        this.titular = titular;
+        this.#saldo = saldo;
+    }
+
+    depositar = (monto) => this.#saldo += monto;
+    obtenerSaldo = () => `Saldo disponible: $${this.#saldo}`;
+}
+
+class CuentaPremium extends CuentaBancaria {
+    constructor(titular, saldo, limite) {
+    super(titular, saldo);
+    this._limite = limite;
+ }
+
+ mostrarLimite = () => `Límite de crédito: $${this._limite}`;
+}
+
+const cuenta = new CuentaPremium("Luis", 5000, 10000);
+console.log(cuenta.obtenerSaldo());
+console.log(cuenta.mostrarLimite()); */
+
