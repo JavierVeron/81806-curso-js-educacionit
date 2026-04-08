@@ -3,7 +3,7 @@ class Contador {
     static fin = 0;
     
     static iniciar() {
-        this.inicio = new Date();
+        this.inicio = new Date(); // dia, mes, año, hora, minuto, segu
         
         return "Comienza conteo..."
     }
